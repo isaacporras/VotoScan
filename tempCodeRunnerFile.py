@@ -1,1 +1,0 @@
-ruta_tesseract = Path(r"C:\Program Files\Tesseract-OCR\tesseract.exe")

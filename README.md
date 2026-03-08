@@ -27,17 +27,50 @@ Ruta comun esperada:
 
 ## Uso
 
-1. En [extract_png_text.py](c:/Users/imano/OneDrive/Documentos/Projects/VotoScan/extract_png_text.py), ajusta `ruta_imagen` al archivo `.png` que quieras leer.
+1. En [main.py](c:/Users/imano/OneDrive/Documentos/Projects/VotoScan/main.py), ajusta `image_path` al archivo `.png` que quieras leer.
 2. Ejecuta:
 
 ```powershell
-python extract_png_text.py
+python main.py
 ```
 
 ## Notas
 
 - El OCR corre localmente, no usa servidor.
 - Si agregamos nuevas librerias, las iremos sumando en la seccion **Dependencias** de este README.
+
+## Configurar variables del sistema (Windows)
+
+Para que cualquier usuario pueda ejecutar el OCR sin tocar el codigo, agrega Tesseract al `PATH`.
+
+### Opcion A: Interfaz grafica (recomendada)
+
+1. Abre el menu de Windows y busca: `Editar las variables de entorno del sistema`.
+2. En la ventana **Propiedades del sistema**, entra a **Variables de entorno...**.
+3. En **Variables del sistema**, selecciona `Path` y haz clic en **Editar...**.
+4. Haz clic en **Nuevo** y agrega esta ruta:
+   - `C:\Program Files\Tesseract-OCR\`
+5. Guarda con **Aceptar** en todas las ventanas.
+6. Cierra y vuelve a abrir la terminal para que tome el cambio.
+7. Verifica:
+
+```powershell
+tesseract --version
+```
+
+### Opcion B: PowerShell (administrador)
+
+Tambien puedes agregarlo por comando:
+
+```powershell
+setx /M PATH "$($env:Path);C:\Program Files\Tesseract-OCR\"
+```
+
+Luego cierra y abre la terminal, y valida con:
+
+```powershell
+tesseract --version
+```
 
 ## Error comun: Tesseract no esta en PATH
 
