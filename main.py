@@ -1,27 +1,32 @@
 ﻿from pathlib import Path
 import json
 
-from text_extractor import TextExtractor
+from models import Assembly, VotingSession
 
 
 def main() -> None:
-    extractor = TextExtractor()
+    assembly = Assembly()
+    assembly.load_roster_from_json("deputies.json")
 
-    image_path = Path("votacion_1_example.PNG")
+    voting_session = VotingSession(
+        name="mocion123",
+        png_path="votacion_1_example.PNG",
+        deputies=assembly.deputies,
+    )
+    unmatched = voting_session.process_results()
 
-    extracted_text = extractor.extract_text(image_path)
-    output_path = Path("resultado_ocr.txt")
-    output_path.write_text(extracted_text, encoding="utf-8")
+    results = {
+        "voting_session": voting_session.to_dict(group_by_parties=True),
+        "unmatched_ocr_names": unmatched,
+    }
 
-    results = extractor.extract_results(image_path)
     results_path = Path("results.json")
     results_path.write_text(
         json.dumps(results, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
-    print(f"Text saved to: {output_path.resolve()}")
-    print(f"Structured results saved to: {results_path.resolve()}")
+    print(f"Voting session processed. Results saved to: {results_path.resolve()}")
 
 
 if __name__ == "__main__":

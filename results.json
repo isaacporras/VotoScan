@@ -1,0 +1,854 @@
+{
+  "voting_session": {
+    "name": "mocion123",
+    "png_path": "votacion_1_example.PNG",
+    "total_deputies": 57,
+    "vote_counts": {
+      "in_favor": 6,
+      "against": 8,
+      "abstention": 15,
+      "absent": 28
+    },
+    "votes": [
+      {
+        "deputy": {
+          "name": "Rodrigo Arias Sánchez",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Gilberth Jiménez Siles",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Danny Vargas Bethancourt",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Paulina Ramírez Portuguez",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Dinorah Barquero Barquero",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Kattia Rivera Soto",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Andrea Álvarez Marín",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Francisco Nicolás Alvarado",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "Óscar Izquierdo Sandí",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Monserrat Ruiz Guevara",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Carolina Delgado Ramírez",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Gloria Navas Montero",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "Daniel Vargas Quirós",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "María Marta Carballo Arce",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Alejandro Pacheco Castro",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "Carlos Felipe García Molina",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Leslye Bojorges León",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Horacio Alvarado Bogantes",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "Vanessa Castro Mora",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Fabricio Alvarado Muñoz",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "Rosalía Brown Young",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "David Segura Gamboa",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Jonathan Prendas Rodríguez",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Antonio Ortega Gutiérrez",
+          "party": "Frente Amplio"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "Sofía Guillén Pérez",
+          "party": "Frente Amplio"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Jonathan Acuña Soto",
+          "party": "Frente Amplio"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "Ariel Robles Barrantes",
+          "party": "Frente Amplio"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Rocío Alfaro Molina",
+          "party": "Frente Amplio"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "Cynthia Córdoba Serrano",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Manuel Morales Díaz",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "Pilar Cisneros Gallo",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "Ada Acuña Castro",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Alexander Barrantes Johnson",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Jorge Antonio Rojas Jiménez",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Luis Diego Vargas Rodríguez",
+          "party": "Partido Liberal Progresista (PLP)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Eliécer Feinzaig Mintz",
+          "party": "Partido Liberal Progresista (PLP)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Johanna Obando Bonilla",
+          "party": "Partido Liberal Progresista (PLP)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Gilberto Campos Cruz",
+          "party": "Partido Liberal Progresista (PLP)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Kattia Cambronero Aguiluz",
+          "party": "Independent"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Dragos Dolanescu Valenciano",
+          "party": "Independent"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Yorleny León Marchena",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Wagner Jiménez Zúñiga",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Luis Fernando Mendoza Jiménez",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Danny Vargas Segura",
+          "party": "Partido Liberacion Nacional (PLN)"
+        },
+        "choice": "abstention"
+      },
+      {
+        "deputy": {
+          "name": "Mauricio Batalla Otárola",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Jorge Dengo Obregón",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Natalia Díaz Quintana",
+          "party": "Partido Liberal Progresista (PLP)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Carlos Andrés Robles Obando",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "María Inés Solís Quirós",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Erwen Masís Castro",
+          "party": "Partido Unidad Social Cristiana (PUSC)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Harllan Hoepelman Sáenz",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Melina Ajoy Palma",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "against"
+      },
+      {
+        "deputy": {
+          "name": "José Pablo Sibaja Chaves",
+          "party": "Partido Nueva Republica"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Priscilla Vindas Salazar",
+          "party": "Frente Amplio"
+        },
+        "choice": "in_favor"
+      },
+      {
+        "deputy": {
+          "name": "José María Villalta Florez-Estrada",
+          "party": "Frente Amplio"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Laura Fernández Delgado",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      },
+      {
+        "deputy": {
+          "name": "Luis Amador Jiménez",
+          "party": "Partido Progreso Social Democratico (PPSD)"
+        },
+        "choice": "absent"
+      }
+    ],
+    "votes_by_party": {
+      "Partido Liberacion Nacional (PLN)": [
+        {
+          "deputy": {
+            "name": "Rodrigo Arias Sánchez",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Gilberth Jiménez Siles",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Danny Vargas Bethancourt",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Paulina Ramírez Portuguez",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Dinorah Barquero Barquero",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Kattia Rivera Soto",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Andrea Álvarez Marín",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Francisco Nicolás Alvarado",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "Óscar Izquierdo Sandí",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Monserrat Ruiz Guevara",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Carolina Delgado Ramírez",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Yorleny León Marchena",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Wagner Jiménez Zúñiga",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Luis Fernando Mendoza Jiménez",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Danny Vargas Segura",
+            "party": "Partido Liberacion Nacional (PLN)"
+          },
+          "choice": "abstention"
+        }
+      ],
+      "Partido Unidad Social Cristiana (PUSC)": [
+        {
+          "deputy": {
+            "name": "Gloria Navas Montero",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "Daniel Vargas Quirós",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "María Marta Carballo Arce",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Alejandro Pacheco Castro",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "Carlos Felipe García Molina",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Leslye Bojorges León",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Horacio Alvarado Bogantes",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "Vanessa Castro Mora",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Carlos Andrés Robles Obando",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "María Inés Solís Quirós",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Erwen Masís Castro",
+            "party": "Partido Unidad Social Cristiana (PUSC)"
+          },
+          "choice": "absent"
+        }
+      ],
+      "Partido Nueva Republica": [
+        {
+          "deputy": {
+            "name": "Fabricio Alvarado Muñoz",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "Rosalía Brown Young",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "David Segura Gamboa",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Jonathan Prendas Rodríguez",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Harllan Hoepelman Sáenz",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Melina Ajoy Palma",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "José Pablo Sibaja Chaves",
+            "party": "Partido Nueva Republica"
+          },
+          "choice": "absent"
+        }
+      ],
+      "Frente Amplio": [
+        {
+          "deputy": {
+            "name": "Antonio Ortega Gutiérrez",
+            "party": "Frente Amplio"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "Sofía Guillén Pérez",
+            "party": "Frente Amplio"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Jonathan Acuña Soto",
+            "party": "Frente Amplio"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "Ariel Robles Barrantes",
+            "party": "Frente Amplio"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Rocío Alfaro Molina",
+            "party": "Frente Amplio"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "Priscilla Vindas Salazar",
+            "party": "Frente Amplio"
+          },
+          "choice": "in_favor"
+        },
+        {
+          "deputy": {
+            "name": "José María Villalta Florez-Estrada",
+            "party": "Frente Amplio"
+          },
+          "choice": "absent"
+        }
+      ],
+      "Partido Progreso Social Democratico (PPSD)": [
+        {
+          "deputy": {
+            "name": "Cynthia Córdoba Serrano",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Manuel Morales Díaz",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "Pilar Cisneros Gallo",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "against"
+        },
+        {
+          "deputy": {
+            "name": "Ada Acuña Castro",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Alexander Barrantes Johnson",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Jorge Antonio Rojas Jiménez",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Mauricio Batalla Otárola",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Jorge Dengo Obregón",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Laura Fernández Delgado",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Luis Amador Jiménez",
+            "party": "Partido Progreso Social Democratico (PPSD)"
+          },
+          "choice": "absent"
+        }
+      ],
+      "Partido Liberal Progresista (PLP)": [
+        {
+          "deputy": {
+            "name": "Luis Diego Vargas Rodríguez",
+            "party": "Partido Liberal Progresista (PLP)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Eliécer Feinzaig Mintz",
+            "party": "Partido Liberal Progresista (PLP)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Johanna Obando Bonilla",
+            "party": "Partido Liberal Progresista (PLP)"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Gilberto Campos Cruz",
+            "party": "Partido Liberal Progresista (PLP)"
+          },
+          "choice": "abstention"
+        },
+        {
+          "deputy": {
+            "name": "Natalia Díaz Quintana",
+            "party": "Partido Liberal Progresista (PLP)"
+          },
+          "choice": "absent"
+        }
+      ],
+      "Independent": [
+        {
+          "deputy": {
+            "name": "Kattia Cambronero Aguiluz",
+            "party": "Independent"
+          },
+          "choice": "absent"
+        },
+        {
+          "deputy": {
+            "name": "Dragos Dolanescu Valenciano",
+            "party": "Independent"
+          },
+          "choice": "absent"
+        }
+      ]
+    }
+  },
+  "unmatched_ocr_names": {
+    "a_favor": [
+      "Larios Trejos, Alejandi",
+      "Alpizar Loaiza, Luz Mar",
+      "Hernandez Rojas, José"
+    ],
+    "en_contra": [
+      "Agiiero Sanabria, Wal«",
+      "Barrantes Chacon, Ale",
+      "Salas Duran, Yonder",
+      ". Rojas Lépez, Jorge An",
+      "Najera Abarca, Paola",
+      "Rojas Salas, Daniela"
+    ],
+    "no_votacion": [
+      "Padilla, Maria Marta",
+      "9 Moreira Brown, Kathe",
+      "Sibaja Jiménez, José P",
+      ". Morera Arrieta, Olga",
+      "Rojas Guzman, Pedro",
+      ". Valverde Méndez, Geis.",
+      "Méndez Gamboa, Rosa",
+      "Rojas Méndez, Sonia"
+    ]
+  }
+}
