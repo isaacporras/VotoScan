@@ -17,7 +17,7 @@ class SeatCircle:
     radius: int
 
 
-# Fixed layout extracted once from asamblea_seats_template.png
+# Fixed layout extracted once from assets/templates/asamblea_seats_template.png
 # Ordered left-to-right, top-to-bottom, matching seat_number.
 DEFAULT_SEAT_LAYOUT: tuple[SeatCircle, ...] = (
     SeatCircle(245, 170, 38),

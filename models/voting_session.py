@@ -1,81 +1,13 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 from difflib import SequenceMatcher
-from enum import Enum
 from pathlib import Path
 from typing import Any
-import json
 import re
 import unicodedata
 
-
-class PoliticalParty(Enum):
-    """Political parties represented in this project."""
-
-    PLN = "Partido Liberacion Nacional (PLN)"
-    PPSD = "Partido Progreso Social Democratico (PPSD)"
-    PUSC = "Partido Unidad Social Cristiana (PUSC)"
-    NUEVA_REPUBLICA = "Partido Nueva Republica"
-    FRENTE_AMPLIO = "Frente Amplio"
-    PLP = "Partido Liberal Progresista (PLP)"
-    INDEPENDENT = "Independent"
-
-    @classmethod
-    def from_text(cls, raw: str) -> PoliticalParty:
-        """Resolve a party from enum key, acronym or full display name."""
-        normalized = cls._normalize_text(raw)
-        alias_map = {
-            "pln": cls.PLN,
-            "ppsd": cls.PPSD,
-            "pusc": cls.PUSC,
-            "nueva_republica": cls.NUEVA_REPUBLICA,
-            "nueva republica": cls.NUEVA_REPUBLICA,
-            "frente_amplio": cls.FRENTE_AMPLIO,
-            "frente amplio": cls.FRENTE_AMPLIO,
-            "plp": cls.PLP,
-            "independent": cls.INDEPENDENT,
-            "independiente": cls.INDEPENDENT,
-            "ind": cls.INDEPENDENT,
-        }
-        if normalized in alias_map:
-            return alias_map[normalized]
-
-        for member in cls:
-            if normalized == cls._normalize_text(member.name) or normalized == cls._normalize_text(member.value):
-                return member
-
-        raise ValueError(f"unknown political party: {raw}")
-
-    @staticmethod
-    def _normalize_text(value: str) -> str:
-        base = unicodedata.normalize("NFKD", value.strip().lower())
-        return "".join(ch for ch in base if not unicodedata.combining(ch))
-
-
-@dataclass(frozen=True)
-class Voter:
-    """A deputy (voter) with name and political party."""
-
-    name: str
-    party: PoliticalParty
-    seat_number: int | None = None
-
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "name": self.name,
-            "party": self.party.value,
-            "seat_number": self.seat_number,
-        }
-
-
-class VoteChoice(Enum):
-    """Possible voting choices for one deputy."""
-
-    IN_FAVOR = "in_favor"
-    AGAINST = "against"
-    ABSTENTION = "abstention"
-    ABSENT = "absent"
+from .vote_choice import VoteChoice
+from .voter import Voter
 
 
 class VotingSession:
@@ -118,7 +50,6 @@ class VotingSession:
         if not isinstance(raw_results, dict):
             raise ValueError("extractor must return a dictionary")
 
-        # Reset current session votes before processing a new OCR run.
         for deputy in self._votes:
             self._votes[deputy] = VoteChoice.ABSENT
 
@@ -198,7 +129,6 @@ class VotingSession:
         if "," not in collapsed:
             return collapsed
 
-        # OCR often returns "last_name, first_name", while assembly roster uses "first_name last_name".
         left, right = collapsed.split(",", 1)
         return f"{right.strip()} {left.strip()}".strip()
 
@@ -324,64 +254,4 @@ class VotingSession:
         return output_path
 
 
-# Backward-compatibility alias.
 Votacion = VotingSession
-
-
-class Assembly:
-    """Assembly model containing only the list of deputies."""
-
-    def __init__(self) -> None:
-        self.deputies: list[Voter] = []
-
-    def add_deputy(self, deputy: Voter) -> None:
-        self.deputies.append(deputy)
-
-    def get_seat_assignments(self) -> list[dict[str, Any]]:
-        """Return assembly composition ordered by seat number."""
-        assignments = sorted(self.deputies, key=lambda dep: (dep.seat_number or 10**9, dep.name))
-        return [
-            {
-                "seat_number": deputy.seat_number,
-                "name": deputy.name,
-                "party": deputy.party.value,
-            }
-            for deputy in assignments
-        ]
-
-    def load_roster_from_json(self, json_path: str | Path) -> None:
-        """Populate deputies from a JSON roster."""
-        path = Path(json_path)
-        if not path.exists():
-            raise FileNotFoundError(f"roster file not found: {path}")
-
-        data = json.loads(path.read_text(encoding="utf-8-sig"))
-        deputies = data.get("deputies")
-        if not isinstance(deputies, list):
-            raise ValueError("JSON must contain a 'deputies' list")
-
-        self.deputies.clear()
-        for index, item in enumerate(deputies, start=1):
-            if not isinstance(item, dict):
-                raise ValueError(f"deputies[{index}] must be an object")
-
-            name = str(item.get("name", "")).strip()
-            if not name:
-                raise ValueError(f"deputies[{index}] is missing 'name'")
-
-            raw_party = item.get("party")
-            if not isinstance(raw_party, str) or not raw_party.strip():
-                raise ValueError(f"deputies[{index}] is missing 'party'")
-
-            raw_seat = item.get("seat_number", index)
-            if not isinstance(raw_seat, int) or raw_seat < 1:
-                raise ValueError(f"deputies[{index}] has invalid 'seat_number'")
-
-            party = PoliticalParty.from_text(raw_party)
-            self.add_deputy(Voter(name=name, party=party, seat_number=raw_seat))
-
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "total_deputies": len(self.deputies),
-            "deputies": [deputy.to_dict() for deputy in self.deputies],
-        }

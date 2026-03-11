@@ -1,17 +1,24 @@
-﻿from pathlib import Path
 import json
 
 from models import Assembly, VotingSession
+from paths import (
+    ASSEMBLY_LABELED,
+    ASSEMBLY_TEMPLATE,
+    DEPUTIES_JSON,
+    RESULTS_JSON,
+    RESULTS_XLSX,
+    VOTING_SCREENSHOT,
+)
 from seat_renderer import AssemblySeatRenderer
 
 
 def main() -> None:
     assembly = Assembly()
-    assembly.load_roster_from_json("deputies.json")
+    assembly.load_roster_from_json(DEPUTIES_JSON)
 
     voting_session = VotingSession(
         name="mocion123",
-        png_path="votacion_1_example.PNG",
+        png_path=VOTING_SCREENSHOT,
         deputies=assembly.deputies,
     )
     unmatched = voting_session.process_results()
@@ -21,33 +28,32 @@ def main() -> None:
         "unmatched_ocr_names": unmatched,
     }
 
-    results_path = Path("results.json")
-    results_path.write_text(
+    RESULTS_JSON.parent.mkdir(parents=True, exist_ok=True)
+    RESULTS_JSON.write_text(
         json.dumps(results, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
     excel_path = voting_session.to_excel(
-        "results.xlsx",
+        RESULTS_XLSX,
         group_by_parties=True,
         group_by_vote=True,
     )
 
-    seats_template = Path("asamblea_seats_template.png")
-    if seats_template.exists():
+    if ASSEMBLY_TEMPLATE.exists():
         seat_image_path = AssemblySeatRenderer().render(
             assembly=assembly,
-            template_path=seats_template,
-            output_path="asamblea_seats_labeled.png",
+            template_path=ASSEMBLY_TEMPLATE,
+            output_path=ASSEMBLY_LABELED,
             vote_choices_by_seat=voting_session.get_votes_by_seat(),
         )
         print(f"Assembly seats image saved to: {seat_image_path.resolve()}")
     else:
         print(
             "Assembly seats template not found. "
-            "Expected file: asamblea_seats_template.png"
+            f"Expected file: {ASSEMBLY_TEMPLATE}"
         )
 
-    print(f"Voting session processed. JSON saved to: {results_path.resolve()}")
+    print(f"Voting session processed. JSON saved to: {RESULTS_JSON.resolve()}")
     print(f"Voting session processed. Excel saved to: {excel_path.resolve()}")
 
 
