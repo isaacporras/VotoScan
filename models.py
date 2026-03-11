@@ -59,9 +59,14 @@ class Voter:
 
     name: str
     party: PoliticalParty
+    seat_number: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {"name": self.name, "party": self.party.value}
+        return {
+            "name": self.name,
+            "party": self.party.value,
+            "seat_number": self.seat_number,
+        }
 
 
 class VoteChoice(Enum):
@@ -84,6 +89,13 @@ class VotingSession:
     @property
     def votes(self) -> dict[Voter, VoteChoice]:
         return dict(self._votes)
+
+    def get_votes_by_seat(self) -> dict[int, VoteChoice]:
+        votes_by_seat: dict[int, VoteChoice] = {}
+        for deputy, choice in self._votes.items():
+            if isinstance(deputy.seat_number, int) and deputy.seat_number > 0:
+                votes_by_seat[deputy.seat_number] = choice
+        return votes_by_seat
 
     def register_vote(self, deputy: Voter, choice: VoteChoice) -> None:
         if deputy not in self._votes:
@@ -244,6 +256,73 @@ class VotingSession:
 
         return payload
 
+    def to_excel(
+        self,
+        xlsx_path: str | Path,
+        group_by_parties: bool = False,
+        group_by_vote: bool = False,
+    ) -> Path:
+        try:
+            from openpyxl import Workbook
+        except ImportError as exc:
+            raise ImportError(
+                "openpyxl is required for Excel export. Install it with: "
+                "python -m pip install openpyxl"
+            ) from exc
+
+        payload = self.to_dict(
+            group_by_parties=group_by_parties,
+            group_by_vote=group_by_vote,
+        )
+
+        workbook = Workbook()
+
+        summary_sheet = workbook.active
+        summary_sheet.title = "summary"
+        summary_sheet.append(["field", "value"])
+        summary_sheet.append(["name", payload["name"]])
+        summary_sheet.append(["png_path", payload["png_path"]])
+        summary_sheet.append(["total_deputies", payload["total_deputies"]])
+        summary_sheet.append(["in_favor", payload["vote_counts"]["in_favor"]])
+        summary_sheet.append(["against", payload["vote_counts"]["against"]])
+        summary_sheet.append(["abstention", payload["vote_counts"]["abstention"]])
+        summary_sheet.append(["absent", payload["vote_counts"]["absent"]])
+
+        votes_sheet = workbook.create_sheet("votes")
+        votes_sheet.append(["seat_number", "deputy_name", "party", "choice"])
+        for vote in payload["votes"]:
+            deputy = vote["deputy"]
+            votes_sheet.append(
+                [deputy["seat_number"], deputy["name"], deputy["party"], vote["choice"]]
+            )
+
+        if group_by_parties and "votes_by_party" in payload:
+            by_party_sheet = workbook.create_sheet("by_party")
+            by_party_sheet.append(["party", "seat_number", "deputy_name", "choice"])
+            votes_by_party = payload["votes_by_party"]
+            for party_name, party_votes in votes_by_party.items():
+                for vote in party_votes:
+                    deputy = vote["deputy"]
+                    by_party_sheet.append(
+                        [party_name, deputy["seat_number"], deputy["name"], vote["choice"]]
+                    )
+
+        if group_by_vote and "votes_by_choice" in payload:
+            by_vote_sheet = workbook.create_sheet("by_vote")
+            by_vote_sheet.append(["choice", "seat_number", "deputy_name", "party"])
+            votes_by_choice = payload["votes_by_choice"]
+            for choice_name, choice_votes in votes_by_choice.items():
+                for vote in choice_votes:
+                    deputy = vote["deputy"]
+                    by_vote_sheet.append(
+                        [choice_name, deputy["seat_number"], deputy["name"], deputy["party"]]
+                    )
+
+        output_path = Path(xlsx_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        workbook.save(output_path)
+        return output_path
+
 
 # Backward-compatibility alias.
 Votacion = VotingSession
@@ -257,6 +336,18 @@ class Assembly:
 
     def add_deputy(self, deputy: Voter) -> None:
         self.deputies.append(deputy)
+
+    def get_seat_assignments(self) -> list[dict[str, Any]]:
+        """Return assembly composition ordered by seat number."""
+        assignments = sorted(self.deputies, key=lambda dep: (dep.seat_number or 10**9, dep.name))
+        return [
+            {
+                "seat_number": deputy.seat_number,
+                "name": deputy.name,
+                "party": deputy.party.value,
+            }
+            for deputy in assignments
+        ]
 
     def load_roster_from_json(self, json_path: str | Path) -> None:
         """Populate deputies from a JSON roster."""
@@ -282,8 +373,12 @@ class Assembly:
             if not isinstance(raw_party, str) or not raw_party.strip():
                 raise ValueError(f"deputies[{index}] is missing 'party'")
 
+            raw_seat = item.get("seat_number", index)
+            if not isinstance(raw_seat, int) or raw_seat < 1:
+                raise ValueError(f"deputies[{index}] has invalid 'seat_number'")
+
             party = PoliticalParty.from_text(raw_party)
-            self.add_deputy(Voter(name=name, party=party))
+            self.add_deputy(Voter(name=name, party=party, seat_number=raw_seat))
 
     def to_dict(self) -> dict[str, Any]:
         return {

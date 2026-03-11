@@ -2,6 +2,7 @@
 import json
 
 from models import Assembly, VotingSession
+from seat_renderer import AssemblySeatRenderer
 
 
 def main() -> None:
@@ -25,8 +26,29 @@ def main() -> None:
         json.dumps(results, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    excel_path = voting_session.to_excel(
+        "results.xlsx",
+        group_by_parties=True,
+        group_by_vote=True,
+    )
 
-    print(f"Voting session processed. Results saved to: {results_path.resolve()}")
+    seats_template = Path("asamblea_seats_template.png")
+    if seats_template.exists():
+        seat_image_path = AssemblySeatRenderer().render(
+            assembly=assembly,
+            template_path=seats_template,
+            output_path="asamblea_seats_labeled.png",
+            vote_choices_by_seat=voting_session.get_votes_by_seat(),
+        )
+        print(f"Assembly seats image saved to: {seat_image_path.resolve()}")
+    else:
+        print(
+            "Assembly seats template not found. "
+            "Expected file: asamblea_seats_template.png"
+        )
+
+    print(f"Voting session processed. JSON saved to: {results_path.resolve()}")
+    print(f"Voting session processed. Excel saved to: {excel_path.resolve()}")
 
 
 if __name__ == "__main__":

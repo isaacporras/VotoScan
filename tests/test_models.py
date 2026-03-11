@@ -33,6 +33,9 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         self.assertEqual(PoliticalParty.PLN, assembly.deputies[0].party)
         self.assertEqual(PoliticalParty.FRENTE_AMPLIO, assembly.deputies[1].party)
         self.assertEqual(PoliticalParty.INDEPENDENT, assembly.deputies[2].party)
+        self.assertEqual(1, assembly.deputies[0].seat_number)
+        self.assertEqual(2, assembly.deputies[1].seat_number)
+        self.assertEqual(3, assembly.deputies[2].seat_number)
 
     def test_load_roster_supports_accented_party_name(self) -> None:
         roster_path = self._write_temp_roster(
@@ -67,6 +70,31 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         assembly = Assembly()
         with self.assertRaises(ValueError):
             assembly.load_roster_from_json(roster_path)
+
+    def test_load_roster_raises_for_invalid_seat_number(self) -> None:
+        roster_path = self._write_temp_roster(
+            {
+                "deputies": [
+                    {"name": "Ana Perez", "party": "PLN", "seat_number": 0},
+                ]
+            }
+        )
+
+        assembly = Assembly()
+        with self.assertRaises(ValueError):
+            assembly.load_roster_from_json(roster_path)
+
+    def test_get_seat_assignments_returns_sorted_seats(self) -> None:
+        assembly = Assembly()
+        assembly.add_deputy(Voter(name="Deputy B", party=PoliticalParty.PUSC, seat_number=2))
+        assembly.add_deputy(Voter(name="Deputy A", party=PoliticalParty.PLN, seat_number=1))
+
+        assignments = assembly.get_seat_assignments()
+
+        self.assertEqual(1, assignments[0]["seat_number"])
+        self.assertEqual("Deputy A", assignments[0]["name"])
+        self.assertEqual(2, assignments[1]["seat_number"])
+        self.assertEqual("Deputy B", assignments[1]["name"])
 
 
 if __name__ == "__main__":
@@ -156,3 +184,17 @@ class VotingSessionToDictGroupingTests(unittest.TestCase):
         self.assertEqual(0, len(data["votes_by_choice"]["against"]))
         self.assertEqual(0, len(data["votes_by_choice"]["abstention"]))
         self.assertEqual(1, len(data["votes_by_choice"]["absent"]))
+
+    def test_get_votes_by_seat_returns_vote_choices(self) -> None:
+        deputies = [
+            Voter(name="Ana Perez", party=PoliticalParty.PLN, seat_number=1),
+            Voter(name="Luis Mora", party=PoliticalParty.PUSC, seat_number=2),
+        ]
+        session = VotingSession(name="mocion123", png_path="file.png", deputies=deputies)
+        session.register_vote(deputies[0], VoteChoice.IN_FAVOR)
+        session.register_vote(deputies[1], VoteChoice.AGAINST)
+
+        votes_by_seat = session.get_votes_by_seat()
+
+        self.assertEqual(VoteChoice.IN_FAVOR, votes_by_seat[1])
+        self.assertEqual(VoteChoice.AGAINST, votes_by_seat[2])

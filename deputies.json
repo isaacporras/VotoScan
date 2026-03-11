@@ -1,61 +1,289 @@
-﻿{
+{
   "deputies": [
-    {"name": "Rodrigo Arias Sánchez", "party": "PLN"},
-    {"name": "Gilberth Jiménez Siles", "party": "PLN"},
-    {"name": "Danny Vargas Bethancourt", "party": "PLN"},
-    {"name": "Paulina Ramírez Portuguez", "party": "PLN"},
-    {"name": "Dinorah Barquero Barquero", "party": "PLN"},
-    {"name": "Kattia Rivera Soto", "party": "PLN"},
-    {"name": "Andrea Álvarez Marín", "party": "PLN"},
-    {"name": "Francisco Nicolás Alvarado", "party": "PLN"},
-    {"name": "Óscar Izquierdo Sandí", "party": "PLN"},
-    {"name": "Monserrat Ruiz Guevara", "party": "PLN"},
-    {"name": "Carolina Delgado Ramírez", "party": "PLN"},
-    {"name": "Gloria Navas Montero", "party": "PUSC"},
-    {"name": "Daniel Vargas Quirós", "party": "PUSC"},
-    {"name": "María Marta Carballo Arce", "party": "PUSC"},
-    {"name": "Alejandro Pacheco Castro", "party": "PUSC"},
-    {"name": "Carlos Felipe García Molina", "party": "PUSC"},
-    {"name": "Leslye Bojorges León", "party": "PUSC"},
-    {"name": "Horacio Alvarado Bogantes", "party": "PUSC"},
-    {"name": "Vanessa Castro Mora", "party": "PUSC"},
-    {"name": "Fabricio Alvarado Muñoz", "party": "Nueva República"},
-    {"name": "Rosalía Brown Young", "party": "Nueva República"},
-    {"name": "David Segura Gamboa", "party": "Nueva República"},
-    {"name": "Jonathan Prendas Rodríguez", "party": "Nueva República"},
-    {"name": "Antonio Ortega Gutiérrez", "party": "Frente Amplio"},
-    {"name": "Sofía Guillén Pérez", "party": "Frente Amplio"},
-    {"name": "Jonathan Acuña Soto", "party": "Frente Amplio"},
-    {"name": "Ariel Robles Barrantes", "party": "Frente Amplio"},
-    {"name": "Rocío Alfaro Molina", "party": "Frente Amplio"},
-    {"name": "Cynthia Córdoba Serrano", "party": "PPSD"},
-    {"name": "Manuel Morales Díaz", "party": "PPSD"},
-    {"name": "Pilar Cisneros Gallo", "party": "PPSD"},
-    {"name": "Ada Acuña Castro", "party": "PPSD"},
-    {"name": "Alexander Barrantes Johnson", "party": "PPSD"},
-    {"name": "Jorge Antonio Rojas Jiménez", "party": "PPSD"},
-    {"name": "Luis Diego Vargas Rodríguez", "party": "PLP"},
-    {"name": "Eliécer Feinzaig Mintz", "party": "PLP"},
-    {"name": "Johanna Obando Bonilla", "party": "PLP"},
-    {"name": "Gilberto Campos Cruz", "party": "PLP"},
-    {"name": "Kattia Cambronero Aguiluz", "party": "Independiente"},
-    {"name": "Dragos Dolanescu Valenciano", "party": "Independiente"},
-    {"name": "Yorleny León Marchena", "party": "PLN"},
-    {"name": "Wagner Jiménez Zúñiga", "party": "PLN"},
-    {"name": "Luis Fernando Mendoza Jiménez", "party": "PLN"},
-    {"name": "Danny Vargas Segura", "party": "PLN"},
-    {"name": "Mauricio Batalla Otárola", "party": "PPSD"},
-    {"name": "Jorge Dengo Obregón", "party": "PPSD"},
-    {"name": "Natalia Díaz Quintana", "party": "PLP"},
-    {"name": "Carlos Andrés Robles Obando", "party": "PUSC"},
-    {"name": "María Inés Solís Quirós", "party": "PUSC"},
-    {"name": "Erwen Masís Castro", "party": "PUSC"},
-    {"name": "Harllan Hoepelman Sáenz", "party": "Nueva República"},
-    {"name": "Melina Ajoy Palma", "party": "Nueva República"},
-    {"name": "José Pablo Sibaja Chaves", "party": "Nueva República"},
-    {"name": "Priscilla Vindas Salazar", "party": "Frente Amplio"},
-    {"name": "José María Villalta Florez-Estrada", "party": "Frente Amplio"},
-    {"name": "Laura Fernández Delgado", "party": "PPSD"},
-    {"name": "Luis Amador Jiménez", "party": "PPSD"}
+    {
+      "name": "Jorge Antonio Rojas López",
+      "party": "PPSD",
+      "seat_number": 1
+    },
+    {
+      "name": "Ada Acuña Castro",
+      "party": "PPSD",
+      "seat_number": 2
+    },
+    {
+      "name": "Paola Nájera Abarca",
+      "party": "PPSD",
+      "seat_number": 3
+    },
+    {
+      "name": "Alexander Barrantes Chac?n",
+      "party": "PPSD",
+      "seat_number": 4
+    },
+    {
+      "name": "Leslye Bojorges León",
+      "party": "PUSC",
+      "seat_number": 5
+    },
+    {
+      "name": "José Pablo Sibaja Jiménez",
+      "party": "Nueva República",
+      "seat_number": 6
+    },
+    {
+      "name": "David Segura Gamboa",
+      "party": "Nueva República",
+      "seat_number": 7
+    },
+    {
+      "name": "Yonder Salas Durán",
+      "party": "Nueva República",
+      "seat_number": 8
+    },
+    {
+      "name": "Luis Diego Vargas Rodríguez",
+      "party": "PLP",
+      "seat_number": 9
+    },
+    {
+      "name": "Cynthia Córdoba Serrano",
+      "party": "PPSD",
+      "seat_number": 10
+    },
+    {
+      "name": "Antonio Ortega Gutiérrez",
+      "party": "Frente Amplio",
+      "seat_number": 11
+    },
+    {
+      "name": "Sofía Guillén Pérez",
+      "party": "Frente Amplio",
+      "seat_number": 12
+    },
+    {
+      "name": "Priscilla Vindas Salazar",
+      "party": "Frente Amplio",
+      "seat_number": 13
+    },
+    {
+      "name": "Jonathan Acuña Soto",
+      "party": "Frente Amplio",
+      "seat_number": 14
+    },
+    {
+      "name": "Pilar Cisneros Gallo",
+      "party": "PPSD",
+      "seat_number": 15
+    },
+    {
+      "name": "Daniel Vargas Quir?s",
+      "party": "PPSD",
+      "seat_number": 16
+    },
+    {
+      "name": "Waldo Agüero Sanabria",
+      "party": "PPSD",
+      "seat_number": 17
+    },
+    {
+      "name": "Manuel Morales Díaz",
+      "party": "PPSD",
+      "seat_number": 18
+    },
+    {
+      "name": "Luz Mary Alpízar Loaiza",
+      "party": "PPSD",
+      "seat_number": 19
+    },
+    {
+      "name": "Rosalía Brown Young",
+      "party": "Nueva República",
+      "seat_number": 20
+    },
+    {
+      "name": "Fabricio Alvarado Muñoz",
+      "party": "Nueva República",
+      "seat_number": 21
+    },
+    {
+      "name": "Olga Lucía Morera Arrieta",
+      "party": "Nueva República",
+      "seat_number": 22
+    },
+    {
+      "name": "Gilberth Jiménez Siles",
+      "party": "PLN",
+      "seat_number": 23
+    },
+    {
+      "name": "Gilberto Campos Cruz",
+      "party": "PLP",
+      "seat_number": 24
+    },
+    {
+      "name": "Eliécer Feinzaig Mintz",
+      "party": "PLP",
+      "seat_number": 25
+    },
+    {
+      "name": "Rocío Alfaro Molina",
+      "party": "Frente Amplio",
+      "seat_number": 26
+    },
+    {
+      "name": "Ariel Robles Barrantes",
+      "party": "Frente Amplio",
+      "seat_number": 27
+    },
+    {
+      "name": "Gloria Navas Montero",
+      "party": "Nueva República",
+      "seat_number": 28
+    },
+    {
+      "name": "Rodrigo Arias Sánchez",
+      "party": "PLN",
+      "seat_number": 29
+    },
+    {
+      "name": "Carlos Felipe García Molina",
+      "party": "PUSC",
+      "seat_number": 30
+    },
+    {
+      "name": "Óscar Izquierdo Sandí",
+      "party": "PLN",
+      "seat_number": 31
+    },
+    {
+      "name": "Alejandra Larios Trejos",
+      "party": "PLN",
+      "seat_number": 32
+    },
+    {
+      "name": "Andrea Álvarez Marín",
+      "party": "PLN",
+      "seat_number": 33
+    },
+    {
+      "name": "Katherine Moreira Brown",
+      "party": "PLN",
+      "seat_number": 34
+    },
+    {
+      "name": "Carolina Delgado Ramírez",
+      "party": "PLN",
+      "seat_number": 35
+    },
+    {
+      "name": "Danny Vargas Bethancourt",
+      "party": "PLN",
+      "seat_number": 36
+    },
+    {
+      "name": "Dinorah Barquero Barquero",
+      "party": "PLN",
+      "seat_number": 37
+    },
+    {
+      "name": "José Joaquín Hernández Rojas",
+      "party": "PLN",
+      "seat_number": 38
+    },
+    {
+      "name": "Monserrat Ruiz Guevara",
+      "party": "PLN",
+      "seat_number": 39
+    },
+    {
+      "name": "Kattia Cambronero Aguiluz",
+      "party": "PLP",
+      "seat_number": 40
+    },
+    {
+      "name": "Alejandro Pacheco Castro",
+      "party": "PUSC",
+      "seat_number": 41
+    },
+    {
+      "name": "Vanessa de Paul Castro Mora",
+      "party": "PUSC",
+      "seat_number": 42
+    },
+    {
+      "name": "Daniela Rojas Salas",
+      "party": "PUSC",
+      "seat_number": 43
+    },
+    {
+      "name": "Paulina Ramírez Portuguez",
+      "party": "PLN",
+      "seat_number": 44
+    },
+    {
+      "name": "Rosaura Méndez Gamboa",
+      "party": "PLN",
+      "seat_number": 45
+    },
+    {
+      "name": "Kattia Rivera Soto",
+      "party": "PLN",
+      "seat_number": 46
+    },
+    {
+      "name": "Pedro Rojas Guzmán",
+      "party": "PLN",
+      "seat_number": 47
+    },
+    {
+      "name": "Luis Fernando Mendoza Jiménez",
+      "party": "PLN",
+      "seat_number": 48
+    },
+    {
+      "name": "José Francisco Nicolás Alvarado",
+      "party": "PLN",
+      "seat_number": 49
+    },
+    {
+      "name": "Sonia Rojas Méndez",
+      "party": "PLN",
+      "seat_number": 50
+    },
+    {
+      "name": "Geison Valverde Méndez",
+      "party": "PLN",
+      "seat_number": 51
+    },
+    {
+      "name": "Johanna Obando Bonilla",
+      "party": "PLP",
+      "seat_number": 52
+    },
+    {
+      "name": "María Marta Padilla Bonilla",
+      "party": "PUSC",
+      "seat_number": 53
+    },
+    {
+      "name": "Horacio Alvarado Bogantes",
+      "party": "PUSC",
+      "seat_number": 54
+    },
+    {
+      "name": "Melina Ajoy Palma",
+      "party": "PUSC",
+      "seat_number": 55
+    },
+    {
+      "name": "Carlos Robles Obando",
+      "party": "PUSC",
+      "seat_number": 56
+    },
+    {
+      "name": "María Marta Carballo Arce",
+      "party": "PUSC",
+      "seat_number": 57
+    }
   ]
 }
