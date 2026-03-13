@@ -241,3 +241,15 @@ class VotingSessionToDictGroupingTests(unittest.TestCase):
 
         self.assertEqual(VoteChoice.IN_FAVOR, votes_by_seat[1])
         self.assertEqual(VoteChoice.AGAINST, votes_by_seat[2])
+
+    def test_get_deputies_needing_manual_review_returns_absent_deputies(self) -> None:
+        deputies = [
+            Voter(name="Ana Perez", party=PoliticalParty.PLN, seat_number=1),
+            Voter(name="Luis Mora", party=PoliticalParty.PUSC, seat_number=2),
+        ]
+        session = VotingSession(name="mocion123", png_path="file.png", deputies=deputies)
+        session.register_vote(deputies[0], VoteChoice.IN_FAVOR)
+
+        review = session.get_deputies_needing_manual_review()
+
+        self.assertEqual([deputies[1]], review)

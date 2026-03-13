@@ -29,6 +29,13 @@ class VotingSession:
                 votes_by_seat[deputy.seat_number] = choice
         return votes_by_seat
 
+    def get_deputies_needing_manual_review(self) -> list[Voter]:
+        return [
+            deputy
+            for deputy, choice in self._votes.items()
+            if choice == VoteChoice.ABSENT
+        ]
+
     def register_vote(self, deputy: Voter, choice: VoteChoice) -> None:
         if deputy not in self._votes:
             raise ValueError(f"deputy is not part of this voting session: {deputy.name}")

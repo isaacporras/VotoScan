@@ -21,6 +21,7 @@ class ProcessArtifacts:
     ocr_debug_path: Path
     ocr_text_debug_path: Path | None
     unmatched_names: dict[str, list[str]]
+    manual_review_deputies: list[dict[str, Any]]
 
 
 def process_voting_screenshot(
@@ -70,10 +71,14 @@ def process_voting_screenshot(
     unmatched = voting_session.process_results(
         extractor=_StaticExtractor(raw_ocr_results)
     )
+    manual_review_deputies = [
+        deputy.to_dict() for deputy in voting_session.get_deputies_needing_manual_review()
+    ]
 
     results = {
         "voting_session": voting_session.to_dict(group_by_parties=True, group_by_vote=True),
         "unmatched_ocr_names": unmatched,
+        "manual_review_deputies": manual_review_deputies,
     }
 
     json_path = target_dir / "results.json"
@@ -106,6 +111,7 @@ def process_voting_screenshot(
         ocr_debug_path=ocr_debug_path,
         ocr_text_debug_path=ocr_text_debug_path,
         unmatched_names=unmatched,
+        manual_review_deputies=manual_review_deputies,
     )
 
 

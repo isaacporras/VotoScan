@@ -159,8 +159,16 @@ class VotoScanApp:
 
         self.generated_pdf_path = artifacts.pdf_path
         self.open_pdf_button.config(state="normal")
-        self.status_var.set(f"Done. PDF saved to: {artifacts.pdf_path}")
+        review_count = len(artifacts.manual_review_deputies)
+        if review_count > 0:
+            self.status_var.set(
+                f"Done with warnings. {review_count} deputies need manual review. PDF saved to: {artifacts.pdf_path}"
+            )
+        else:
+            self.status_var.set(f"Done. PDF saved to: {artifacts.pdf_path}")
         self._show_preview(artifacts.preview_image_path)
+        if review_count > 0:
+            self._show_manual_review_warning(artifacts.manual_review_deputies)
 
     def _show_preview(self, image_path: Path) -> None:
         with Image.open(image_path) as image:
@@ -178,6 +186,17 @@ class VotoScanApp:
         if self.generated_pdf_path is None:
             return
         webbrowser.open(self.generated_pdf_path.resolve().as_uri())
+
+    def _show_manual_review_warning(self, manual_review_deputies: list[dict[str, object]]) -> None:
+        names = [str(item.get("name", "")).strip() for item in manual_review_deputies]
+        preview = "\n".join(f"- {name}" for name in names[:12] if name)
+        extra_count = max(0, len(names) - 12)
+        extra_suffix = f"\n...and {extra_count} more." if extra_count else ""
+        messagebox.showwarning(
+            "Manual review needed",
+            "The OCR did not find a vote for these deputies. Please review them manually.\n\n"
+            f"{preview}{extra_suffix}",
+        )
 
 
 def _default_downloads_dir() -> Path:
