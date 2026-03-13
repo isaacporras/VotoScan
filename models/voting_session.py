@@ -71,21 +71,26 @@ class VotingSession:
                 if not isinstance(raw_name, str):
                     continue
 
-                deputy = self._match_deputy_name(raw_name, assigned)
-                if deputy is None:
+                deputies = self._match_deputies_in_text(raw_name, assigned)
+                if not deputies:
                     unmatched[section_key].append(raw_name)
                     continue
 
-                self._votes[deputy] = choice
-                assigned.add(deputy)
+                for deputy in deputies:
+                    self._votes[deputy] = choice
+                    assigned.add(deputy)
 
         return unmatched
 
-    def _match_deputy_name(self, raw_name: str, assigned: set[Voter]) -> Voter | None:
-        """Map one OCR name string to the closest deputy in this session."""
-        query = self._normalize_person_name(raw_name)
+    def _match_deputies_in_text(self, raw_text: str, assigned: set[Voter]) -> list[Voter]:
+        """Map one OCR fragment to one or more deputies."""
+        query = self._normalize_person_name(raw_text)
         if not query:
-            return None
+            return []
+
+        surname_matches = self._match_by_surnames_in_text(query, assigned)
+        if surname_matches:
+            return surname_matches
 
         best_deputy: Voter | None = None
         best_score = 0.0
@@ -94,14 +99,53 @@ class VotingSession:
                 continue
 
             candidate = self._normalize_person_name(deputy.name)
-            score = self._name_similarity_score(query, candidate)
+            surname_candidate = self._normalize_person_name(deputy.surnames)
+            score = self._name_match_score(query, candidate, surname_candidate)
             if score > best_score:
                 best_score = score
                 best_deputy = deputy
 
-        if best_score < 0.58:
-            return None
-        return best_deputy
+        if best_deputy is None or best_score < 0.58:
+            return []
+        return [best_deputy]
+
+    def _match_by_surnames_in_text(self, query: str, assigned: set[Voter]) -> list[Voter]:
+        query_tokens = set(token for token in query.split() if token)
+        matches: list[tuple[int, Voter]] = []
+
+        for deputy in self._votes:
+            if deputy in assigned:
+                continue
+
+            surname_phrase = self._normalize_person_name(deputy.surnames)
+            surname_tokens = [token for token in surname_phrase.split() if token]
+            if len(surname_tokens) < 2:
+                continue
+
+            if surname_phrase in query:
+                matches.append((len(surname_phrase), deputy))
+                continue
+
+            if set(surname_tokens).issubset(query_tokens):
+                matches.append((len(surname_tokens), deputy))
+
+        matches.sort(key=lambda item: item[0], reverse=True)
+        return [deputy for _, deputy in matches]
+
+    @staticmethod
+    def _name_match_score(query: str, full_name: str, surnames: str) -> float:
+        score = VotingSession._name_similarity_score(query, full_name)
+        surname_score = VotingSession._name_similarity_score(query, surnames)
+
+        query_tokens = [token for token in query.split() if token]
+        surname_tokens = [token for token in surnames.split() if token]
+        query_set = set(query_tokens)
+        surname_set = set(surname_tokens)
+
+        if len(query_tokens) >= 2 and query_set and query_set.issubset(surname_set):
+            return max(score, 0.92, surname_score)
+
+        return max(score, surname_score)
 
     @staticmethod
     def _name_similarity_score(a: str, b: str) -> float:

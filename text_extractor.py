@@ -263,21 +263,21 @@ class TextExtractor:
         return bounds
 
     def _names_from_block(self, block_text: str) -> list[str]:
-        """Parse probable names from an OCR text block."""
-        names: list[str] = []
+        """Return cleaned OCR fragments from one block without heavy name parsing."""
+        entries: list[str] = []
         for raw_line in block_text.splitlines():
             line = self._clean_line(raw_line)
-            if not line or "," not in line:
+            if not line:
                 continue
 
             pieces = re.split(r"[|\\]+", line)
             for piece in pieces:
-                candidate = self._clean_line(piece)
-                if not candidate or "," not in candidate:
+                entry = self._clean_line(piece)
+                if not entry:
                     continue
-                names.append(candidate)
+                entries.append(entry)
 
-        return names
+        return entries
 
     def _dedupe_preserving_order(self, values: list[str]) -> list[str]:
         """Deduplicate string list while preserving first-seen order."""

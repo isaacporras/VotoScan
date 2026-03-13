@@ -45,9 +45,12 @@ class Assembly:
             if not isinstance(item, dict):
                 raise ValueError(f"deputies[{index}] must be an object")
 
+            raw_given_names = item.get("given_names")
+            raw_surnames = item.get("surnames")
             name = str(item.get("name", "")).strip()
-            if not name:
-                raise ValueError(f"deputies[{index}] is missing 'name'")
+
+            if raw_given_names is None and raw_surnames is None and not name:
+                raise ValueError(f"deputies[{index}] is missing 'given_names'/'surnames'")
 
             raw_party = item.get("party")
             if not isinstance(raw_party, str) or not raw_party.strip():
@@ -58,7 +61,15 @@ class Assembly:
                 raise ValueError(f"deputies[{index}] has invalid 'seat_number'")
 
             party = PoliticalParty.from_text(raw_party)
-            self.add_deputy(Voter(name=name, party=party, seat_number=raw_seat))
+            self.add_deputy(
+                Voter(
+                    name=name or None,
+                    given_names=str(raw_given_names).strip() if raw_given_names is not None else None,
+                    surnames=str(raw_surnames).strip() if raw_surnames is not None else None,
+                    party=party,
+                    seat_number=raw_seat,
+                )
+            )
 
     def to_dict(self) -> dict[str, Any]:
         return {

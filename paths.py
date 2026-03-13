@@ -7,6 +7,7 @@ ASSETS_DIR = PROJECT_ROOT / "assets"
 TEMPLATES_DIR = ASSETS_DIR / "templates"
 EXAMPLES_DIR = ASSETS_DIR / "examples"
 OUTPUT_DIR = PROJECT_ROOT / "output"
+DEBUG_DIR = PROJECT_ROOT / "debug"
 
 DEPUTIES_JSON = DATA_DIR / "deputies.json"
 VOTING_SCREENSHOT = EXAMPLES_DIR / "votacion_1_example.PNG"

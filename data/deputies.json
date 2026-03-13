@@ -1,289 +1,346 @@
 {
   "deputies": [
     {
-      "name": "Jorge Antonio Rojas López",
       "party": "PPSD",
-      "seat_number": 1
+      "seat_number": 1,
+      "given_names": "Jorge Antonio",
+      "surnames": "Rojas López"
     },
     {
-      "name": "Ada Acuña Castro",
       "party": "PPSD",
-      "seat_number": 2
+      "seat_number": 2,
+      "given_names": "Ada",
+      "surnames": "Acuña Castro"
     },
     {
-      "name": "Paola Nájera Abarca",
       "party": "PPSD",
-      "seat_number": 3
+      "seat_number": 3,
+      "given_names": "Paola",
+      "surnames": "Nájera Abarca"
     },
     {
-      "name": "Alexander Barrantes Chac?n",
       "party": "PPSD",
-      "seat_number": 4
+      "seat_number": 4,
+      "given_names": "Alexander",
+      "surnames": "Barrantes Chac?n"
     },
     {
-      "name": "Leslye Bojorges León",
       "party": "PUSC",
-      "seat_number": 5
+      "seat_number": 5,
+      "given_names": "Leslye",
+      "surnames": "Bojorges León"
     },
     {
-      "name": "José Pablo Sibaja Jiménez",
       "party": "Nueva República",
-      "seat_number": 6
+      "seat_number": 6,
+      "given_names": "José Pablo",
+      "surnames": "Sibaja Jiménez"
     },
     {
-      "name": "David Segura Gamboa",
       "party": "Nueva República",
-      "seat_number": 7
+      "seat_number": 7,
+      "given_names": "David",
+      "surnames": "Segura Gamboa"
     },
     {
-      "name": "Yonder Salas Durán",
       "party": "Nueva República",
-      "seat_number": 8
+      "seat_number": 8,
+      "given_names": "Yonder",
+      "surnames": "Salas Durán"
     },
     {
-      "name": "Luis Diego Vargas Rodríguez",
       "party": "PLP",
-      "seat_number": 9
+      "seat_number": 9,
+      "given_names": "Luis Diego",
+      "surnames": "Vargas Rodríguez"
     },
     {
-      "name": "Cynthia Córdoba Serrano",
       "party": "PPSD",
-      "seat_number": 10
+      "seat_number": 10,
+      "given_names": "Cynthia",
+      "surnames": "Córdoba Serrano"
     },
     {
-      "name": "Antonio Ortega Gutiérrez",
       "party": "Frente Amplio",
-      "seat_number": 11
+      "seat_number": 11,
+      "given_names": "Antonio",
+      "surnames": "Ortega Gutiérrez"
     },
     {
-      "name": "Sofía Guillén Pérez",
       "party": "Frente Amplio",
-      "seat_number": 12
+      "seat_number": 12,
+      "given_names": "Sofía",
+      "surnames": "Guillén Pérez"
     },
     {
-      "name": "Priscilla Vindas Salazar",
       "party": "Frente Amplio",
-      "seat_number": 13
+      "seat_number": 13,
+      "given_names": "Priscilla",
+      "surnames": "Vindas Salazar"
     },
     {
-      "name": "Jonathan Acuña Soto",
       "party": "Frente Amplio",
-      "seat_number": 14
+      "seat_number": 14,
+      "given_names": "Jonathan",
+      "surnames": "Acuña Soto"
     },
     {
-      "name": "Pilar Cisneros Gallo",
       "party": "PPSD",
-      "seat_number": 15
+      "seat_number": 15,
+      "given_names": "Pilar",
+      "surnames": "Cisneros Gallo"
     },
     {
-      "name": "Daniel Vargas Quir?s",
       "party": "PPSD",
-      "seat_number": 16
+      "seat_number": 16,
+      "given_names": "Daniel",
+      "surnames": "Vargas Quir?s"
     },
     {
-      "name": "Waldo Agüero Sanabria",
       "party": "PPSD",
-      "seat_number": 17
+      "seat_number": 17,
+      "given_names": "Waldo",
+      "surnames": "Agüero Sanabria"
     },
     {
-      "name": "Manuel Morales Díaz",
       "party": "PPSD",
-      "seat_number": 18
+      "seat_number": 18,
+      "given_names": "Manuel",
+      "surnames": "Morales Díaz"
     },
     {
-      "name": "Luz Mary Alpízar Loaiza",
       "party": "PPSD",
-      "seat_number": 19
+      "seat_number": 19,
+      "given_names": "Luz Mary",
+      "surnames": "Alpízar Loaiza"
     },
     {
-      "name": "Rosalía Brown Young",
       "party": "Nueva República",
-      "seat_number": 20
+      "seat_number": 20,
+      "given_names": "Rosalía",
+      "surnames": "Brown Young"
     },
     {
-      "name": "Fabricio Alvarado Muñoz",
       "party": "Nueva República",
-      "seat_number": 21
+      "seat_number": 21,
+      "given_names": "Fabricio",
+      "surnames": "Alvarado Muñoz"
     },
     {
-      "name": "Olga Lucía Morera Arrieta",
       "party": "Nueva República",
-      "seat_number": 22
+      "seat_number": 22,
+      "given_names": "Olga Lucía",
+      "surnames": "Morera Arrieta"
     },
     {
-      "name": "Gilberth Jiménez Siles",
       "party": "PLN",
-      "seat_number": 23
+      "seat_number": 23,
+      "given_names": "Gilberth",
+      "surnames": "Jiménez Siles"
     },
     {
-      "name": "Gilberto Campos Cruz",
       "party": "PLP",
-      "seat_number": 24
+      "seat_number": 24,
+      "given_names": "Gilberto",
+      "surnames": "Campos Cruz"
     },
     {
-      "name": "Eliécer Feinzaig Mintz",
       "party": "PLP",
-      "seat_number": 25
+      "seat_number": 25,
+      "given_names": "Eliécer",
+      "surnames": "Feinzaig Mintz"
     },
     {
-      "name": "Rocío Alfaro Molina",
       "party": "Frente Amplio",
-      "seat_number": 26
+      "seat_number": 26,
+      "given_names": "Rocío",
+      "surnames": "Alfaro Molina"
     },
     {
-      "name": "Ariel Robles Barrantes",
       "party": "Frente Amplio",
-      "seat_number": 27
+      "seat_number": 27,
+      "given_names": "Ariel",
+      "surnames": "Robles Barrantes"
     },
     {
-      "name": "Gloria Navas Montero",
       "party": "Nueva República",
-      "seat_number": 28
+      "seat_number": 28,
+      "given_names": "Gloria",
+      "surnames": "Navas Montero"
     },
     {
-      "name": "Rodrigo Arias Sánchez",
       "party": "PLN",
-      "seat_number": 29
+      "seat_number": 29,
+      "given_names": "Rodrigo",
+      "surnames": "Arias Sánchez"
     },
     {
-      "name": "Carlos Felipe García Molina",
       "party": "PUSC",
-      "seat_number": 30
+      "seat_number": 30,
+      "given_names": "Carlos Felipe",
+      "surnames": "García Molina"
     },
     {
-      "name": "Óscar Izquierdo Sandí",
       "party": "PLN",
-      "seat_number": 31
+      "seat_number": 31,
+      "given_names": "Ã“scar",
+      "surnames": "Izquierdo Sandí"
     },
     {
-      "name": "Alejandra Larios Trejos",
       "party": "PLN",
-      "seat_number": 32
+      "seat_number": 32,
+      "given_names": "Alejandra",
+      "surnames": "Larios Trejos"
     },
     {
-      "name": "Andrea Álvarez Marín",
       "party": "PLN",
-      "seat_number": 33
+      "seat_number": 33,
+      "given_names": "Andrea",
+      "surnames": "Álvarez Marín"
     },
     {
-      "name": "Katherine Moreira Brown",
       "party": "PLN",
-      "seat_number": 34
+      "seat_number": 34,
+      "given_names": "Katherine",
+      "surnames": "Moreira Brown"
     },
     {
-      "name": "Carolina Delgado Ramírez",
       "party": "PLN",
-      "seat_number": 35
+      "seat_number": 35,
+      "given_names": "Carolina",
+      "surnames": "Delgado Ramírez"
     },
     {
-      "name": "Danny Vargas Bethancourt",
       "party": "PLN",
-      "seat_number": 36
+      "seat_number": 36,
+      "given_names": "Danny",
+      "surnames": "Vargas Bethancourt"
     },
     {
-      "name": "Dinorah Barquero Barquero",
       "party": "PLN",
-      "seat_number": 37
+      "seat_number": 37,
+      "given_names": "Dinorah",
+      "surnames": "Barquero Barquero"
     },
     {
-      "name": "José Joaquín Hernández Rojas",
       "party": "PLN",
-      "seat_number": 38
+      "seat_number": 38,
+      "given_names": "José Joaquín",
+      "surnames": "Hernández Rojas"
     },
     {
-      "name": "Monserrat Ruiz Guevara",
       "party": "PLN",
-      "seat_number": 39
+      "seat_number": 39,
+      "given_names": "Monserrat",
+      "surnames": "Ruiz Guevara"
     },
     {
-      "name": "Kattia Cambronero Aguiluz",
       "party": "PLP",
-      "seat_number": 40
+      "seat_number": 40,
+      "given_names": "Kattia",
+      "surnames": "Cambronero Aguiluz"
     },
     {
-      "name": "Alejandro Pacheco Castro",
       "party": "PUSC",
-      "seat_number": 41
+      "seat_number": 41,
+      "given_names": "Alejandro",
+      "surnames": "Pacheco Castro"
     },
     {
-      "name": "Vanessa de Paul Castro Mora",
       "party": "PUSC",
-      "seat_number": 42
+      "seat_number": 42,
+      "given_names": "Vanessa de Paul",
+      "surnames": "Castro Mora"
     },
     {
-      "name": "Daniela Rojas Salas",
       "party": "PUSC",
-      "seat_number": 43
+      "seat_number": 43,
+      "given_names": "Daniela",
+      "surnames": "Rojas Salas"
     },
     {
-      "name": "Paulina Ramírez Portuguez",
       "party": "PLN",
-      "seat_number": 44
+      "seat_number": 44,
+      "given_names": "Paulina",
+      "surnames": "Ramírez Portuguez"
     },
     {
-      "name": "Rosaura Méndez Gamboa",
       "party": "PLN",
-      "seat_number": 45
+      "seat_number": 45,
+      "given_names": "Rosaura",
+      "surnames": "Méndez Gamboa"
     },
     {
-      "name": "Kattia Rivera Soto",
       "party": "PLN",
-      "seat_number": 46
+      "seat_number": 46,
+      "given_names": "Kattia",
+      "surnames": "Rivera Soto"
     },
     {
-      "name": "Pedro Rojas Guzmán",
       "party": "PLN",
-      "seat_number": 47
+      "seat_number": 47,
+      "given_names": "Pedro",
+      "surnames": "Rojas Guzmán"
     },
     {
-      "name": "Luis Fernando Mendoza Jiménez",
       "party": "PLN",
-      "seat_number": 48
+      "seat_number": 48,
+      "given_names": "Luis Fernando",
+      "surnames": "Mendoza Jiménez"
     },
     {
-      "name": "José Francisco Nicolás Alvarado",
       "party": "PLN",
-      "seat_number": 49
+      "seat_number": 49,
+      "given_names": "José Francisco",
+      "surnames": "Nicolás Alvarado"
     },
     {
-      "name": "Sonia Rojas Méndez",
       "party": "PLN",
-      "seat_number": 50
+      "seat_number": 50,
+      "given_names": "Sonia",
+      "surnames": "Rojas Méndez"
     },
     {
-      "name": "Geison Valverde Méndez",
       "party": "PLN",
-      "seat_number": 51
+      "seat_number": 51,
+      "given_names": "Geison",
+      "surnames": "Valverde Méndez"
     },
     {
-      "name": "Johanna Obando Bonilla",
       "party": "PLP",
-      "seat_number": 52
+      "seat_number": 52,
+      "given_names": "Johanna",
+      "surnames": "Obando Bonilla"
     },
     {
-      "name": "María Marta Padilla Bonilla",
       "party": "PUSC",
-      "seat_number": 53
+      "seat_number": 53,
+      "given_names": "María Marta",
+      "surnames": "Padilla Bonilla"
     },
     {
-      "name": "Horacio Alvarado Bogantes",
       "party": "PUSC",
-      "seat_number": 54
+      "seat_number": 54,
+      "given_names": "Horacio",
+      "surnames": "Alvarado Bogantes"
     },
     {
-      "name": "Melina Ajoy Palma",
       "party": "PUSC",
-      "seat_number": 55
+      "seat_number": 55,
+      "given_names": "Melina",
+      "surnames": "Ajoy Palma"
     },
     {
-      "name": "Carlos Robles Obando",
       "party": "PUSC",
-      "seat_number": 56
+      "seat_number": 56,
+      "given_names": "Carlos",
+      "surnames": "Robles Obando"
     },
     {
-      "name": "María Marta Carballo Arce",
       "party": "PUSC",
-      "seat_number": 57
+      "seat_number": 57,
+      "given_names": "María Marta",
+      "surnames": "Carballo Arce"
     }
   ]
 }

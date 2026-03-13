@@ -1,175 +1,138 @@
 # VotoScan
 
-Sistema en Python para **automatizar el registro de votaciones del plenario de la Asamblea Legislativa de Costa Rica** a partir de un screenshot.
+VotoScan is a Python desktop tool that helps automate vote tracking for the Legislative Assembly of Costa Rica from screenshots of the voting board.
 
-Este proyecto nace como un pequeño regalo para el equipo de **Delfino.CR**, que durante años ha llevado un seguimiento riguroso y transparente de las votaciones legislativas.
+It uses OCR to extract deputy names, matches them against a roster, assigns each vote, and exports the results as JSON, Excel, a labeled seat map, and a PDF report.
 
----
+## What It Does
 
-# ¿Por qué existe este proyecto?
+Given a screenshot of a plenary vote, VotoScan:
 
-El registro de votaciones del plenario suele implicar un proceso bastante manual:
+1. Detects the vote sections on screen.
+2. Extracts deputy names with OCR.
+3. Matches OCR output against the official deputy roster.
+4. Classifies votes as `in_favor`, `against`, `abstention`, or `absent`.
+5. Generates structured output files.
 
-1. Ver el video de la sesión legislativa.
-2. Esperar a que aparezca el tablero de votación.
-3. Pausar el video.
-4. Revisar diputado por diputado.
-5. Anotar manualmente cada voto.
+## Current Interface
 
-Cuando esto se hace para **muchas votaciones**, el proceso puede volverse lento y repetitivo.
+The app now runs through a simple Tkinter interface.
 
-**VotoScan** intenta simplificar ese trabajo.
+From the UI you can:
 
-> A partir de un screenshot del tablero de votación, el sistema detecta los nombres de los diputados, identifica su voto y genera automáticamente archivos estructurados con los resultados.
+- choose the voting screenshot
+- choose the output folder
+- set a session name
+- process the image with a loading indicator
+- preview the generated report image in the window
+- open the generated PDF
 
----
+Default output folder:
 
-# ¿Qué hace VotoScan?
+- `Downloads` on Windows
 
-A partir de una imagen del tablero de votación, el sistema:
+## Outputs
 
-1. Extrae los nombres de los diputados usando **OCR**
-2. Identifica el tipo de voto de cada uno
-3. Cruza esa información con el padrón de diputados
-4. Genera distintos formatos de salida
+Each run generates these files in the selected output folder:
 
-### Salidas generadas
+- `results.json`
+- `results.xlsx`
+- `asamblea_seats_labeled.png` if the seat template exists
+- `voting_report.pdf`
 
-El sistema produce automáticamente:
+## Project Structure
 
-- **JSON** (ideal para integrarlo con sitios web)
-- **Excel** (para análisis y revisión rápida)
-- **Imagen de la Asamblea etiquetada** mostrando cada curul y su voto
+```text
+VotoScan/
+|-- assets/
+|   |-- examples/
+|   |   `-- votacion_1_example.PNG
+|   `-- templates/
+|       `-- asamblea_seats_template.png
+|-- data/
+|   `-- deputies.json
+|-- models/
+|   |-- __init__.py
+|   |-- assembly.py
+|   |-- political_party.py
+|   |-- vote_choice.py
+|   |-- voter.py
+|   `-- voting_session.py
+|-- tests/
+|-- gui_app.py
+|-- main.py
+|-- paths.py
+|-- processor.py
+|-- seat_renderer.py
+`-- text_extractor.py
+```
 
----
+## Requirements
 
-# Ejemplo de flujo
+Install Python dependencies:
 
-## 1. Screenshot de la votación
+```powershell
+python -m pip install pytesseract pillow openpyxl
+```
 
-Coloca un screenshot del tablero de votación dentro de:
+On Windows, install Tesseract OCR:
 
-assets/examples/
+```powershell
+winget install UB-Mannheim.TesseractOCR
+```
 
-Ejemplo:
+If `tesseract.exe` is not in your `PATH`, you will need to add it manually.
 
-assets/examples/votacion_1_example.PNG
+## How To Run
 
----
+Start the desktop app with:
 
-## 2. Procesamiento automático
+```powershell
+python main.py
+```
 
-El sistema:
+Then:
 
-- detecta bloques de votación (`a favor`, `en contra`, etc.)
-- extrae nombres de diputados
-- corrige errores comunes de OCR
-- asigna votos al padrón de diputados
+1. Select a screenshot of the voting board.
+2. Select the output folder.
+3. Optionally change the session name.
+4. Click `Process`.
+5. Wait for the loading indicator to finish.
+6. Review the preview and open the PDF if needed.
 
----
+## Data Files
 
-## 3. Resultados generados
+Deputy roster:
 
-Después de ejecutar el sistema se generan automáticamente:
+- `data/deputies.json`
 
-output/results.json  
-output/results.xlsx  
-output/asamblea_seats_labeled.png  
+Seat template:
 
----
+- `assets/templates/asamblea_seats_template.png`
 
-# Dependencias
+Example screenshot:
 
-Instala las dependencias de Python:
+- `assets/examples/votacion_1_example.PNG`
 
-    python -m pip install pytesseract pillow openpyxl
+## Internal Modules
 
-En Windows también debes instalar **Tesseract OCR**:
+- `gui_app.py`: Tkinter interface
+- `processor.py`: end-to-end processing pipeline
+- `text_extractor.py`: OCR extraction with Tesseract
+- `seat_renderer.py`: labeled seat map rendering
+- `models/`: domain models split by responsibility
+- `paths.py`: shared project paths
 
-    winget install UB-Mannheim.TesseractOCR
+## Tests
 
----
+Run the test suite with:
 
-# Cómo ejecutarlo
+```powershell
+python -m unittest discover -s tests
+```
 
-1. Clona el repositorio
+## Notes
 
-    git clone https://github.com/tuusuario/VotoScan
-    cd VotoScan
-
-2. Coloca el screenshot de votación en:
-
-    assets/examples/
-
-3. Ejecuta el programa:
-
-    python main.py
-
-4. Revisa los resultados en:
-
-    output/
-
----
-
-# Cómo funciona internamente
-
-## 1. Padrón de diputados
-
-Se carga desde:
-
-    data/deputies.json
-
-Contiene:
-
-- nombre del diputado
-- partido político
-- número de curul
-
----
-
-## 2. OCR del screenshot
-
-El módulo `TextExtractor` usa **pytesseract** para:
-
-- detectar secciones de votación
-- extraer nombres de diputados
-- limpiar ruido típico del OCR
-
----
-
-## 3. Asignación de votos
-
-El sistema compara los nombres detectados contra el padrón y usa **similitud de texto** para empatar nombres aunque el OCR tenga errores menores.
-
-Cada diputado queda clasificado como:
-
-- in_favor
-- against
-- abstention
-- absent
-
----
-
-## 4. Render del plenario
-
-Opcionalmente se genera una imagen de la Asamblea donde cada curul aparece etiquetada según el voto.
-
-Esto se hace con:
-
-    seat_renderer.py
-
----
-
-# Tests
-
-Ejecutar:
-
-    python -m unittest discover -s tests
-
----
-
-# Nota final
-
-Este proyecto fue creado con el objetivo de **facilitar el seguimiento de votaciones legislativas** y apoyar el trabajo de transparencia que realiza el equipo de **Delfino.CR**.
-
-Si este proyecto ayuda aunque sea un poco a reducir el trabajo manual en ese proceso, entonces ya cumplió su propósito.
+- OCR quality depends on screenshot clarity and board layout consistency.
+- If the template image is missing, the app still generates JSON, Excel, and PDF using the source screenshot.
+- Unmatched OCR names are preserved in `results.json` for manual review.

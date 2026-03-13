@@ -18,9 +18,9 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         roster_path = self._write_temp_roster(
             {
                 "deputies": [
-                    {"name": "Ana Perez", "party": "PLN"},
-                    {"name": "Luis Mora", "party": "Frente Amplio"},
-                    {"name": "Sam Vega", "party": "ind"},
+                    {"given_names": "Ana", "surnames": "Perez", "party": "PLN"},
+                    {"given_names": "Luis", "surnames": "Mora", "party": "Frente Amplio"},
+                    {"given_names": "Sam", "surnames": "Vega", "party": "ind"},
                 ]
             }
         )
@@ -33,6 +33,8 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         self.assertEqual(PoliticalParty.PLN, assembly.deputies[0].party)
         self.assertEqual(PoliticalParty.FRENTE_AMPLIO, assembly.deputies[1].party)
         self.assertEqual(PoliticalParty.INDEPENDENT, assembly.deputies[2].party)
+        self.assertEqual("Ana", assembly.deputies[0].given_names)
+        self.assertEqual("Perez", assembly.deputies[0].surnames)
         self.assertEqual(1, assembly.deputies[0].seat_number)
         self.assertEqual(2, assembly.deputies[1].seat_number)
         self.assertEqual(3, assembly.deputies[2].seat_number)
@@ -41,7 +43,7 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         roster_path = self._write_temp_roster(
             {
                 "deputies": [
-                    {"name": "Fabricio Alvarado", "party": "Nueva República"},
+                    {"given_names": "Fabricio", "surnames": "Alvarado", "party": "Nueva República"},
                 ]
             }
         )
@@ -62,7 +64,7 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         roster_path = self._write_temp_roster(
             {
                 "deputies": [
-                    {"name": "Ana Perez", "party": "UNKNOWN"},
+                    {"given_names": "Ana", "surnames": "Perez", "party": "UNKNOWN"},
                 ]
             }
         )
@@ -75,7 +77,7 @@ class AssemblyLoadRosterTests(unittest.TestCase):
         roster_path = self._write_temp_roster(
             {
                 "deputies": [
-                    {"name": "Ana Perez", "party": "PLN", "seat_number": 0},
+                    {"given_names": "Ana", "surnames": "Perez", "party": "PLN", "seat_number": 0},
                 ]
             }
         )
@@ -150,6 +152,47 @@ class VotingSessionProcessResultsTests(unittest.TestCase):
         self.assertEqual(["Nombre Inexistente"], unmatched["a_favor"])
         self.assertEqual(VoteChoice.ABSENT, session.get_vote(deputies[0]))
 
+    def test_process_results_matches_surnames_when_ocr_omits_given_names(self) -> None:
+        deputies = [
+            Voter(given_names="Kattia", surnames="Cambronero Aguiluz", party=PoliticalParty.PLP),
+            Voter(given_names="Kattia", surnames="Rivera Soto", party=PoliticalParty.PLN),
+        ]
+        session = VotingSession(name="mocion123", png_path="file.png", deputies=deputies)
+        extractor = _FakeExtractor(
+            {
+                "a_favor": ["Cambronero Aguiluz"],
+                "en_contra": [],
+                "no_votacion": [],
+            }
+        )
+
+        unmatched = session.process_results(extractor=extractor)
+
+        self.assertEqual([], unmatched["a_favor"])
+        self.assertEqual(VoteChoice.IN_FAVOR, session.get_vote(deputies[0]))
+        self.assertEqual(VoteChoice.ABSENT, session.get_vote(deputies[1]))
+
+    def test_process_results_matches_multiple_deputies_from_one_ocr_fragment(self) -> None:
+        deputies = [
+            Voter(given_names="Rosalia", surnames="Brown Young", party=PoliticalParty.NUEVA_REPUBLICA),
+            Voter(given_names="Kattia", surnames="Cambronero Aguiluz", party=PoliticalParty.PLP),
+            Voter(given_names="Gilberto", surnames="Campos Cruz", party=PoliticalParty.PLP),
+        ]
+        session = VotingSession(name="mocion123", png_path="file.png", deputies=deputies)
+        extractor = _FakeExtractor(
+            {
+                "a_favor": ["Brown Young, Rosalia Cambronero Aguiluz, Campos Cruz, Gilberto"],
+                "en_contra": [],
+                "no_votacion": [],
+            }
+        )
+
+        unmatched = session.process_results(extractor=extractor)
+
+        self.assertEqual([], unmatched["a_favor"])
+        self.assertEqual(VoteChoice.IN_FAVOR, session.get_vote(deputies[0]))
+        self.assertEqual(VoteChoice.IN_FAVOR, session.get_vote(deputies[1]))
+        self.assertEqual(VoteChoice.IN_FAVOR, session.get_vote(deputies[2]))
 
 class VotingSessionToDictGroupingTests(unittest.TestCase):
     def test_to_dict_groups_votes_by_party(self) -> None:
